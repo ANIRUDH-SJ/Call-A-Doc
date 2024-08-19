@@ -66,7 +66,7 @@ app.post('/respond', async (req, res) => {
 });
 
 const getGroqChatCompletion = async (convo) => {
-    const groq = new Groq({ apiKey: "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" });
+    const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
 
     const apiResponse = await groq.chat.completions.create({
         messages: [
@@ -76,7 +76,7 @@ const getGroqChatCompletion = async (convo) => {
             },
             ...convo
         ],
-        model: "llama3-8b-8192",
+        model: process.env.GROQ_MODEL,
     });
 
     if (apiResponse.choices[0].text === '') {

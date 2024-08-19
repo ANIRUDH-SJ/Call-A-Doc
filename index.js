@@ -12,7 +12,9 @@ const { urlencoded } = require("body-parser");
 const speech = require("@google-cloud/speech");
 const speechClient = new speech.SpeechClient();
 
-const TWILIO_RESPONSE_API = "https://d8c7-119-161-98-139.ngrok-free.app/process-query";
+const TWILIO_RESPONSE_API = process.env.TWILIO_RESPONSE_API;
+
+
 
 // Function to create a speech recognition request
 const createRequest = (languageCode) => ({
